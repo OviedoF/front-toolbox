@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFilesList, getFilesData } from './redux/features/files/filesSlice';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from './components/Header';
+import FileSelector from './components/FileSelector';
+import FileTable from './components/FileTable';
+import LoadingSpinner from './components/LoadingSpinner';
+import ErrorAlert from './components/ErrorAlert';
 
 function App() {
+  const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.files);
+
+  useEffect(() => {
+    dispatch(getFilesList());
+    dispatch(getFilesData());
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <FileSelector />
+      <Container fluid className="px-4">
+        {error ? <ErrorAlert error={error} /> : loading ? <LoadingSpinner /> : <FileTable />}
+      </Container>
     </div>
   );
 }

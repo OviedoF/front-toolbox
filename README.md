@@ -1,70 +1,113 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React App
 
-## Available Scripts
+Una aplicación frontend creada con React 18, compatible con Node.js 16. Esta app fue desarrollada por Federico Oviedo como Choice Técnico para FULL STACK en ToolBox.
 
-In the project directory, you can run:
+A continuación, se presenta una guía rápida para la instalación, ejecución y estructura del proyecto.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🚀 Instalación
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clona el repositorio:
 
-### `npm test`
+```bash
+git clone https://github.com/OviedoF/front-toolbox
+cd front-toolbox
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Instala las dependencias:
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Inicia la aplicación en modo desarrollo:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+La app correrá por defecto en [http://localhost:3000](http://localhost:3000).
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## ⚙️ Variables de entorno (opcional)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Sin ser obligatorio para su funcionamiento, se puede cambiar la dirección de la API desde un archivo .env en la carpeta raíz. 
+Por defecto, se estará tomando la api como [http://localhost:4000](http://localhost:4000).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Ejemplo de `.env`:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```env
+REACT_APP_API_URL=
+```
 
-## Learn More
+Para que los cambios en `.env` tengan efecto, es necesario reiniciar el servidor (`npm start`).
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🧱 Estructura del proyecto
 
-### Code Splitting
+```
+src/
+├── components/       # Componentes React reutilizables
+├── redux/            # Contexto React para manejo de estado global
+├── App.js            # Componente raíz
+└── index.js          # Punto de entrada, renderiza <App /> y provee Redux store
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔄 Gestión de estado con Redux
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Esta aplicación utiliza **Redux** para el manejo del estado global de la aplicación, facilitando la administración y sincronización de datos entre componentes.
 
-### Making a Progressive Web App
+- La configuración del store se encuentra en la carpeta `src/redux`.
+- Se usan slices y Redux Toolkit para mantener el código modular y limpio.
+- El store se provee a toda la app mediante el componente `<Provider>` en `index.js`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 🛠 Scripts disponibles
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `npm start`  
+  Inicia el servidor de desarrollo con hot-reloading en [http://localhost:3000](http://localhost:3000).
 
-### Deployment
+- `npm run build`  
+  Genera la versión optimizada para producción en la carpeta `build/`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- `npm test`  
+  Ejecuta los tests configurados (Jest).
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🧪 Testeo
+
+Para correr los tests, ejecuta:
+
+```bash
+npm test
+```
+
+El entorno usa Jest para testing unitario y de componentes.
+
+---
+
+## ✅ Librerías y versiones principales
+
+| Paquete               | Versión        | Descripción                                   |
+|-----------------------|----------------|-----------------------------------------------|
+| react                 | ^18.2.0        | Biblioteca principal UI                       |
+| react-dom             | ^18.2.0        | Renderizado para el DOM                       |
+| redux                 | ^4.2.0         | Biblioteca para manejo de estado              |
+| @reduxjs/toolkit      | ^1.9.0         | Herramientas para simplificar Redux           |
+| react-redux           | ^8.0.5         | Integración oficial Redux + React             |
+| react-bootstrap       | ^2.10.10       | Manejo de estilos a través de Bootstrap       |
+
+---
+
+## 💡 Consideraciones importantes
+
+- Esta app está construida con React 18, compatible con Node.js 16.
+- El manejo de estado global se realiza con Redux Toolkit para mayor escalabilidad y facilidad.
